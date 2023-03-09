@@ -15,7 +15,7 @@ exports.addtag = (req, res) => {
   })
 }
 
-//添加记录
+//添加收支记录
 exports.addbill = (req, res) => {
   const body = req.body
   const sql = 'select tag_id from bill_tag where user_id=? and type=? and tag_name=?'
@@ -31,6 +31,20 @@ exports.addbill = (req, res) => {
         status: 0,
         message: '添加成功！',
       })
+    })
+  })
+}
+
+//删除某个记录
+exports.deletebill = (req, res) => { 
+  const body = req.body 
+  const sql = 'delete from bill where id=?'
+  db.query(sql, [body.id], (err, result) => {
+    if(err) return res.cc(err)
+    //删除成功
+    res.send({
+      status: 0,
+      message: '删除成功！',
     })
   })
 }
