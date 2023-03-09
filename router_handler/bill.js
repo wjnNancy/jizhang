@@ -56,6 +56,7 @@ exports.deletebill = (req, res) => {
 
 //编辑记录
 exports.updatebill = (req, res) => {
+  const body = req.body
   res.send('ok')
 }
 
