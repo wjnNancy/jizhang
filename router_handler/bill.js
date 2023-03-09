@@ -49,6 +49,22 @@ exports.deletebill = (req, res) => {
   })
 }
 
+//获取单个记录
+exports.getbill = (req, res) => {
+  const body = req.body
+  //定义查询记录的SQL语句
+  const sql = 'select * from bill where id=?'
+  db.query(sql, [body.id], (err, result) => {
+    if(err) return res.cc(err)
+    //查询成功
+    res.send({
+      status: 0,
+      message: '查询成功！',
+      data: result,
+    })
+  })
+}
+
 // //获取记录列表
 // exports.getpage = (req, res) => {
 //   const page = req.body
@@ -68,36 +84,6 @@ exports.deletebill = (req, res) => {
 //       status: 0,
 //       message: '查询成功！',
 //       data: datalist,
-//     })
-//   })
-// }
-
-// //获取单个记录
-// exports.getbill = (req, res) => {
-//   const body = req.body
-//   //定义查询记录的SQL语句
-//   const sql = 'select * from bill where id=?'
-//   db.query(sql, [body.id], (err, result) => {
-//     if(err) return res.cc(err)
-//     //查询成功
-//     res.send({
-//       status: 0,
-//       message: '查询成功！',
-//       data: result,
-//     })
-//   })
-// }
-
-// //删除某个记录
-// exports.deletebill = (req, res) => { 
-//   const body = req.body 
-//   const sql = 'delete from bill where id=?'
-//   db.query(sql, [body.id], (err, result) => {
-//     if(err) return res.cc(err)
-//     //删除成功
-//     res.send({
-//       status: 0,
-//       message: '删除成功！',
 //     })
 //   })
 // }

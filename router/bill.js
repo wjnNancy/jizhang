@@ -10,11 +10,11 @@ router.post('/addtag', bill_handler.addtag)
 router.post('/addbill', bill_handler.addbill)
 //删除收支记录
 router.delete('/deletebill', bill_handler.deletebill)
-// //获得分页表单
-// router.get('/getpage', bill_handler.getpage)
-// //获得收支记录
-// router.get('/getbill', bill_handler.getbill)
+//获得单个收支记录
+router.get('/getbill', bill_handler.getbill)
 // //编辑收支记录
 // router.put('/updatebill', bill_handler.updatebill)
+// //获得分页表单
+// router.get('/getpage', bill_handler.getpage)
 
 module.exports = router
