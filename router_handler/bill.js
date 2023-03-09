@@ -63,5 +63,6 @@ exports.updatebill = (req, res) => {
 //添加记录
 exports.addbill = (req, res) => {
   const body = req.body
+  const sql = 'insert into bill(type, amount, date, tag_id, tag_name, remark) values(?, ?, ?, ?, ?, ?)'
   res.send('ok')
 }
