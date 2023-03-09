@@ -62,5 +62,6 @@ exports.updatebill = (req, res) => {
 
 //添加记录
 exports.addbill = (req, res) => {
+  const body = req.body
   res.send('ok')
 }
