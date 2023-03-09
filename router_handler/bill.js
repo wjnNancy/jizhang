@@ -15,6 +15,26 @@ exports.addtag = (req, res) => {
   })
 }
 
+//添加记录
+exports.addbill = (req, res) => {
+  const body = req.body
+  const sql = 'select tag_id from bill_tag where user_id=? and type=? and tag_name=?'
+  db.query(sql, [req.user.id, body.type, body.tag_name], (err, result) => {
+    if(err) return res.cc(err)
+    const tag_id = result[0].tag_id
+    console.log(tag_id)
+    const sql = 'insert into bill(amount, date, remark, tag_id, user_id) values(?, ?, ?, ?, ?)'
+    db.query(sql, [body.amount, body.date, body.remark, tag_id, req.user.id], (err, result) => {
+      if(err) return res.cc(err)
+        //添加成功
+        res.send({
+        status: 0,
+        message: '添加成功！',
+      })
+    })
+  })
+}
+
 // //获取记录列表
 // exports.getpage = (req, res) => {
 //   const page = req.body
@@ -71,20 +91,5 @@ exports.addtag = (req, res) => {
 // //编辑记录
 // exports.updatebill = (req, res) => {
 //   const body = req.body
-//   res.send('ok')
-// }
-
-// //添加记录
-// exports.addbill = (req, res) => {
-//   const body = req.body
-//   const sql = 'insert into bill(type, amount, date, tag_id, tag_name, remark) values(?, ?, ?, ?, ?, ?)'
-//   db.query(sql, [], (err, result) => {
-//     if(err) return res.cc(err)
-//     //删除成功
-//     res.send({
-//       status: 0,
-//       message: '添加成功！',
-//     })
-//   })
 //   res.send('ok')
 // }

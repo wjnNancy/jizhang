@@ -6,6 +6,8 @@ const bill_handler = require('../router_handler/bill')
 
 //添加收支类型
 router.post('/addtag', bill_handler.addtag)
+//添加收支记录
+router.post('/addbill', bill_handler.addbill)
 // //获得分页表单
 // router.get('/getpage', bill_handler.getpage)
 // //获得收支记录
@@ -14,7 +16,5 @@ router.post('/addtag', bill_handler.addtag)
 // router.delete('/deletebill', bill_handler.deletebill)
 // //编辑收支记录
 // router.put('/updatebill', bill_handler.updatebill)
-// //添加收支记录
-// router.post('/addbill', bill_handler.addbill)
 
 module.exports = router
